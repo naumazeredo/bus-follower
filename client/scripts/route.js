@@ -1,2 +1,2 @@
-class Route {
+Route = class Route {
 }
