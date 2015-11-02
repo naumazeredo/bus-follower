@@ -1,8 +1,15 @@
 <body>
   <div class="map-container">
     {{> googleMap name="map" options=mapOptions}}
-  </div>
-  <div class="search-box">
-      <button type="button" id="button">Button</button>
+    {{> busQuery}}
   </div>
 </body>
+
+<template name="busQuery">
+	<form class="query">
+		<input type="text" name="bus" placeholder="Número do ônibus" autofocus/>
+		<div class="search-box">
+      <input type="submit" value="pesquisar"/>
+	  </div>
+	</form>
+</template>
