@@ -1,6 +1,6 @@
-class Bus {
+Bus = class Bus {
     constructor() {
-        move(0, 0)
+        this.move(0, 0)
     }
 
     move(x, y) {
