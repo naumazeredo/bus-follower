@@ -13,7 +13,8 @@ Bus = class Bus {
 
         this.marker = new google.maps.Marker({
             position: { lat: this.lat, lng: this.lng },
-            map: GoogleMaps.maps.map.instance
+            icon: icon,
+            map: GoogleMaps.maps.map.instance,
         });
     }
 
