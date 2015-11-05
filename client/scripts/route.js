@@ -24,8 +24,8 @@ Route = class Route {
 
         // Parse data
         var path_coordinates = []
-        for(var i=0; i<data.length; i++) {
-            path_coordinates.push({'lat': parseFloat(data[i].latitude), 'lng': parseFloat(data[i].longitude)});
+        for(var i=0; i<path_data.length; i++) {
+            path_coordinates.push({'lat': parseFloat(path_data[i].latitude), 'lng': parseFloat(path_data[i].longitude)});
         }
 
         this.path = new google.maps.Polyline({
