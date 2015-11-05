@@ -10,9 +10,15 @@ Template.busQuery.events({
             }
             update = false
 
+            var updateMapPosition = true;
+
             var getBuses = function() {
                 $.get("http://dadosabertos.rio.rj.gov.br/apiTransporte/apresentacao/rest/index.cfm/onibus/"+bus, function(data) {
                     curRoute.updateBuses(data.DATA);
+                    if (updateMapPosition) {
+                        curRoute.recenter()
+                        updateMapPosition = false
+                    }
                 }).fail(function() {
                     clearInterval(update);
                     update = false;
