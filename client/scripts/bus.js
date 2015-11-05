@@ -18,8 +18,9 @@ Bus = class Bus {
                 path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
                 rotation: this.dir,
                 anchor: new google.maps.Point(0, 2.6),
-                strokeWeight: 2,
-                scale: 4
+                strokeWeight: 3,
+                scale: 6,
+                zIndex: 2
             }
         });
     }
