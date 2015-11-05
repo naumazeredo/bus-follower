@@ -1,6 +1,10 @@
 Route = class Route {
     constructor() {
+        if (typeof Route.instance === 'object')
+            return Route.instance
+
         this.buses = []
+        Route.instance = this
     }
 
     updateBuses(jsonData) {
@@ -59,5 +63,3 @@ Route = class Route {
         })
     }
 }
-
-curRoute = new Route();

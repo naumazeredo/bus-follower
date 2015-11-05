@@ -5,6 +5,8 @@ Template.busQuery.events({
         var buses_url = "http://dadosabertos.rio.rj.gov.br/apiTransporte/apresentacao/rest/index.cfm/onibus/"
         var bus = event.target.bus.value;
 
+        var route = new Route()
+
         if (bus) {
             if (typeof update !== 'undefined') {
                 clearInterval(update)
@@ -14,7 +16,7 @@ Template.busQuery.events({
             // Get the route
             $.get(route_url.replace('{}', bus), function(data) {
                 data  = new CSV(data).object;
-                curRoute.drawPath(data);
+                route.drawPath(data);
             })
 
             var updateMapPosition = true;
@@ -22,9 +24,9 @@ Template.busQuery.events({
             // Get buses positions
             var getBuses = function() {
                 $.get(buses_url + bus, function(data) {
-                    curRoute.updateBuses(data.DATA);
+                    route.updateBuses(data.DATA);
                     if (updateMapPosition) {
-                        curRoute.recenter()
+                        route.recenter()
                         updateMapPosition = false
                     }
                 }).fail(function() {
