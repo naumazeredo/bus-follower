@@ -1,11 +1,7 @@
-Bus = class Bus {
+Stop = class Stop {
     constructor(data) {
-        this.ord = data[1]
-        this.linha = data[2]
-        this.lat = data[3]
-        this.lng = data[4]
-        this.vel = data[5]
-        this.dir = data[6]
+        this.lat = parseFloat(data.latitude)
+        this.lng = parseFloat(data.longitude)
     }
 
     draw() {
@@ -15,12 +11,10 @@ Bus = class Bus {
             position: { lat: this.lat, lng: this.lng },
             map: GoogleMaps.maps.map.instance,
             icon: {
-                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+                url: "busstop.png",
                 rotation: this.dir,
-                anchor: new google.maps.Point(0, 2.6),
-                strokeWeight: 3,
-                scale: 6,
-                zIndex: 3,
+                scaledSize: new google.maps.Size(15, 15),
+                zIndex: 2,
             }
         });
     }
