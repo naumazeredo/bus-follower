@@ -12,7 +12,8 @@ Route = class Route {
 
         for (var i = 0; i < jsonData.length; i++) {
             var bus = new Bus(jsonData[i])
-            this.buses.push(bus)
+            if (bus.uptodate)
+                this.buses.push(bus)
         }
 
         this.draw()
