@@ -6,6 +6,10 @@ Bus = class Bus {
         this.lng = data[4]
         this.vel = data[5]
         this.dir = data[6]
+
+        var date = new Date(data[0])
+        date.setMinutes(date.getMinutes()+20)
+        this.uptodate = (new Date().getTime() <= date)
     }
 
     draw() {

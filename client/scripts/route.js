@@ -14,6 +14,8 @@ Route = class Route {
             min_lng = 200, max_lng = -200
         for (var i = 0; i < jsonData.length; i++) {
             var bus = new Bus(jsonData[i])
+            if (bus.uptodate)
+                this.buses.push(bus)
             this.buses.push(bus)
             if (bus.lat < min_lat) min_lat = bus.lat
             if (bus.lat > max_lat) max_lat = bus.lat
