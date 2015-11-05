@@ -1,5 +1,5 @@
 Template.busQuery.events({
-    'submit .query': function(){
+    'submit .query': function(event){
         event.preventDefault();
 
         var bus = event.target.bus.value;
