@@ -1,7 +1,15 @@
+let instance = null
+
 Route = class Route {
     constructor() {
+        if (!instance) instance = this
         this.buses = []
         this.stops = []
+    }
+
+    static getInstance() {
+        if (!instance) new Route()
+        return instance
     }
 
     updateBuses(jsonData) {
@@ -75,5 +83,3 @@ Route = class Route {
         })
     }
 }
-
-curRoute = new Route();

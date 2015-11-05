@@ -6,6 +6,8 @@ Template.busQuery.events({
         var stops_url = "http://dadosabertos.rio.rj.gov.br/apiTransporte/Apresentacao/csv/gtfs/onibus/paradas/gtfs_linha{}-paradas.csv"
         var bus = event.target.bus.value;
 
+        var route = Route.getInstance()
+
         if (bus) {
             if (typeof update !== 'undefined') {
                 clearInterval(update)
@@ -15,7 +17,7 @@ Template.busQuery.events({
             // Get the route
             $.get(route_url.replace('{}', bus), function(data) {
                 data  = new CSV(data).object;
-                curRoute.drawPath(data);
+                route.drawPath(data);
             })
 
             // Get the stops
@@ -29,9 +31,9 @@ Template.busQuery.events({
             // Get buses positions
             var getBuses = function() {
                 $.get(buses_url + bus, function(data) {
-                    curRoute.updateBuses(data.DATA);
+                    route.updateBuses(data.DATA);
                     if (updateMapPosition) {
-                        curRoute.recenter()
+                        route.recenter()
                         updateMapPosition = false
                     }
                 }).fail(function() {
