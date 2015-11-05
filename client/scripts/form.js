@@ -17,10 +17,16 @@ Template.busQuery.events({
                 curRoute.drawPath(data);
             })
 
+            var updateMapPosition = true;
+
             // Get buses positions
             var getBuses = function() {
                 $.get(buses_url + bus, function(data) {
                     curRoute.updateBuses(data.DATA);
+                    if (updateMapPosition) {
+                        curRoute.recenter()
+                        updateMapPosition = false
+                    }
                 }).fail(function() {
                     clearInterval(update);
                     update = false;
