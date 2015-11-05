@@ -21,7 +21,10 @@ Bus = class Bus {
             icon: {
                 path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
                 rotation: this.dir,
-                scale: 6
+                anchor: new google.maps.Point(0, 2.6),
+                strokeWeight: 3,
+                scale: 6,
+                zIndex: 2
             }
         });
     }
