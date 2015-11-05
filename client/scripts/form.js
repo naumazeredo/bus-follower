@@ -5,7 +5,7 @@ Template.busQuery.events({
         var buses_url = "http://dadosabertos.rio.rj.gov.br/apiTransporte/apresentacao/rest/index.cfm/onibus/"
         var bus = event.target.bus.value;
 
-        var route = new Route()
+        var route = Route.getInstance()
 
         if (bus) {
             if (typeof update !== 'undefined') {

@@ -1,10 +1,14 @@
+let instance = null
+
 Route = class Route {
     constructor() {
-        if (typeof Route.instance === 'object')
-            return Route.instance
-
+        if (!instance) instance = this
         this.buses = []
-        Route.instance = this
+    }
+
+    static getInstance() {
+        if (!instance) new Route()
+        return instance
     }
 
     updateBuses(jsonData) {
