@@ -2,6 +2,10 @@ Stop = class Stop {
     constructor(data) {
         this.lat = parseFloat(data.latitude)
         this.lng = parseFloat(data.longitude)
+        this.marker = null
+
+        if (isNaN(this.lat) || isNaN(this.lng))
+            throw new TypeError('Entrada com tipos errados')
     }
 
     draw() {
@@ -22,6 +26,7 @@ Stop = class Stop {
     erase() {
         if (this.marker) {
             this.marker.setMap(null);
+            this.marker = null
         }
     }
 }

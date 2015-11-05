@@ -1,15 +1,19 @@
 Bus = class Bus {
     constructor(data) {
+        if (data.length != 7)
+            throw new TypeError('Entrada com tamanho inválido')
         this.ord = data[1]
-        this.linha = data[2]
-        this.lat = data[3]
-        this.lng = data[4]
-        this.vel = data[5]
-        this.dir = data[6]
+        this.lin = data[2]
+        this.lat = parseFloat(data[3])
+        this.lng = parseFloat(data[4])
+        this.vel = parseFloat(data[5])
+        this.dir = parseFloat(data[6])
 
-        var date = new Date(data[0])
-        date.setMinutes(date.getMinutes()+20)
-        this.uptodate = (new Date().getTime() <= date)
+        if (isNaN(this.lat) || isNaN(this.lng) ||
+            isNaN(this.vel) || isNaN(this.dir))
+            throw new TypeError('Parâmentros de tipo errado')
+
+        this.marker = null
     }
 
     draw() {
@@ -32,6 +36,7 @@ Bus = class Bus {
     erase() {
         if (this.marker) {
             this.marker.setMap(null);
+            this.marker = null
         }
     }
 }
