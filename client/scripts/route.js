@@ -26,6 +26,27 @@ Route = class Route {
         this.draw()
     }
 
+    drawPath(path_data) {
+        // Remove existing polyline
+        if (this.path) this.path.setMap(null)
+
+        // Parse data
+        var path_coordinates = []
+        for(var i=0; i<path_data.length; i++) {
+            path_coordinates.push({'lat': parseFloat(path_data[i].latitude), 'lng': parseFloat(path_data[i].longitude)});
+        }
+
+        this.path = new google.maps.Polyline({
+            path: path_coordinates,
+             geodesic: true,
+             strokeColor: '#FF0000',
+             strokeOpacity: 0.5,
+             strokeWeight: 5,
+             zIndex: 1,
+             map: GoogleMaps.maps.map.instance,
+        });
+    }
+
     recenter() {
         GoogleMaps.maps.map.instance.setCenter(new google.maps.LatLng(this.lat, this.lng))
     }
