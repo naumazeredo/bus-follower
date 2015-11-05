@@ -24,14 +24,20 @@ Template.busQuery.events({
                 curRoute.drawStops(data);
             })
 
+            var updateMapPosition = true;
+
             // Get buses positions
             var getBuses = function() {
                 $.get(buses_url + bus, function(data) {
                     curRoute.updateBuses(data.DATA);
+                    if (updateMapPosition) {
+                        curRoute.recenter()
+                        updateMapPosition = false
+                    }
                 }).fail(function() {
                     clearInterval(update);
                     update = false;
-                    alert("Essa linha não existe");
+                    alert("Erro ao pegar ônibus. Verifique a conexão com a internet e se a linha existe!");
                 });
             }
             getBuses()
