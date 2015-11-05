@@ -23,7 +23,7 @@ Template.busQuery.events({
             // Get the stops
             $.get(stops_url.replace('{}', bus), function(data) {
                 data  = new CSV(data).object;
-                curRoute.drawStops(data);
+                route.drawStops(data);
             })
 
             var updateMapPosition = true;
