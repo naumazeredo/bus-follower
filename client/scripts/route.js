@@ -1,6 +1,15 @@
+let instance = null
+
 Route = class Route {
     constructor() {
+        if (!instance) instance = this
         this.buses = []
+        this.stops = []
+    }
+
+    static getInstance() {
+        if (!instance) new Route()
+        return instance
     }
 
     updateBuses(jsonData) {
@@ -49,6 +58,21 @@ Route = class Route {
         });
     }
 
+    drawStops(data) {
+        // Remove existing stops
+        $.each(this.stops, function(_, stop) {
+            stop.erase()
+        })
+        this.stops = []
+
+        // Parse data
+        for(var i=0; i<data.length; i++) {
+            var stop = new Stop(data[i])
+            stop.draw()
+            this.stops.push(stop)
+        }
+    }
+
     recenter() {
         GoogleMaps.maps.map.instance.setCenter(new google.maps.LatLng(this.lat, this.lng))
     }
@@ -59,5 +83,3 @@ Route = class Route {
         })
     }
 }
-
-curRoute = new Route();

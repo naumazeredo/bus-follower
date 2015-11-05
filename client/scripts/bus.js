@@ -24,7 +24,7 @@ Bus = class Bus {
                 anchor: new google.maps.Point(0, 2.6),
                 strokeWeight: 3,
                 scale: 6,
-                zIndex: 2
+                zIndex: 3,
             }
         });
     }
