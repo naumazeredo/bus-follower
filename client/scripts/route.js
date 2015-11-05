@@ -4,6 +4,7 @@ Route = class Route {
     constructor() {
         if (!instance) instance = this
         this.buses = []
+        this.stops = []
     }
 
     static getInstance() {
@@ -55,6 +56,21 @@ Route = class Route {
              zIndex: 1,
              map: GoogleMaps.maps.map.instance,
         });
+    }
+
+    drawStops(data) {
+        // Remove existing stops
+        $.each(this.stops, function(_, stop) {
+            stop.erase()
+        })
+        this.stops = []
+
+        // Parse data
+        for(var i=0; i<data.length; i++) {
+            var stop = new Stop(data[i])
+            stop.draw()
+            this.stops.push(stop)
+        }
     }
 
     recenter() {
