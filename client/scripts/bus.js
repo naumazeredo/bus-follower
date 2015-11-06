@@ -4,10 +4,10 @@ Bus = class Bus {
             throw new TypeError('Entrada com tamanho inválido')
         this.ord = data[1]
         this.lin = data[2]
-        this.lat = parseFloat(data[3])
-        this.lng = parseFloat(data[4])
-        this.vel = parseFloat(data[5])
-        this.dir = parseFloat(data[6])
+        this.lat = +data[3]
+        this.lng = +data[4]
+        this.vel = +data[5]
+        this.dir = +data[6]
 
         if (isNaN(this.lat) || isNaN(this.lng) ||
             isNaN(this.vel) || isNaN(this.dir))

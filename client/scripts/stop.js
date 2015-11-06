@@ -1,7 +1,7 @@
 Stop = class Stop {
     constructor(data) {
-        this.lat = parseFloat(data.latitude)
-        this.lng = parseFloat(data.longitude)
+        this.lat = +data.latitude
+        this.lng = +data.longitude
         this.marker = null
 
         if (isNaN(this.lat) || isNaN(this.lng))

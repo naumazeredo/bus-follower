@@ -51,8 +51,8 @@ Route = class Route {
         var path_coordinates = []
         for(var i=0; i<data.length; i++) {
             var coord = {
-                'lat': parseFloat(data[i].latitude),
-                'lng': parseFloat(data[i].longitude)
+                'lat': +data[i].latitude,
+                'lng': +data[i].longitude
             };
 
             if (isNaN(coord.lat) || isNaN(coord.lng))
