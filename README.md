@@ -6,6 +6,15 @@ O programa serve como um rastrador dos ônibus na cidade do Rio de Janeiro, ofer
 
 Tudo isso é feito usando a API do Google e os dados oferecidos pela cidade do Rio de Janeiro. O objetivo foi de disponibilizar uma interface mais simples possível para o usuário, que permita que ele identifique a posição dos veículos da linha desejada e possa fazer uma previsão de quanto tempo o ônibus levará para chegar ao ponto.
 
+### Instalação
+Para instalar e rodar o aplicativo localmente:
+
+1. Instale o meteor (instruções em inglês [aqui](https://www.meteor.com/install)).
+2. Clone o [projeto](https://github.com/naumazeredo/bus-follower) do GitHub.
+3. Entre no diretório raíz do projeto e execute `$ meteor`
+
+O app está pronto para ser utilizado em qualquer browser da sua máquina.
+
 ### Modo de uso
 Para usar o aplicativo, basta acessa-lo em [busfollower.meteor.com](http://busfollower.meteor.com/) e escolher o número da linha que se deseja descobrir a posição dos carros. Após a escolha, insira o número da linha no formulário no lado esquerdo e superior da tela e pressione pesquisar. Após isso o aplicativo desenhará as rotas, os pontos e a posição mais atual disponibilizada pela prefeitura do Rio dos veículos dessa linha no mapa.
 
