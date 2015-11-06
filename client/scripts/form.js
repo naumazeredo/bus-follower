@@ -22,7 +22,7 @@ Template.busQuery.events({
                     route.drawStops(new CSV(data.content).object);
             });
 
-            var updateMapPosition = true;
+            var updateMapPosition = true
 
             // Get buses positions
             var getBuses = function() {
@@ -38,8 +38,9 @@ Template.busQuery.events({
                     alert("Erro ao pegar ônibus. Verifique a conexão com a internet e se a linha existe!");
                 });
             }
+
             getBuses()
-            update = setInterval(getBuses, 10000);
+            update = setInterval(getBuses, 10000)
         }
     }
 });

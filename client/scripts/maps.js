@@ -8,15 +8,3 @@ Template.body.helpers({
     }
   }
 });
-
-/*
-Template.body.onCreated(function() {
-  GoogleMaps.ready('map', function(map) {
-    // Add a marker to the map once it's ready
-    var marker = new google.maps.Marker({
-      position: map.options.center,
-      map: map.instance
-    });
-  });
-});
-*/
