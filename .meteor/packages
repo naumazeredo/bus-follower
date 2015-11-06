@@ -21,3 +21,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 sanjo:jasmine
 velocity:html-reporter
 dburles:google-maps
+http

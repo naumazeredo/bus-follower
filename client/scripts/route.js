@@ -2,9 +2,13 @@ let instance = null
 
 Route = class Route {
     constructor() {
-        if (!instance) instance = this
-        this.buses = []
-        this.stops = []
+        if (!instance) {
+            instance = this
+            this.buses = []
+            this.stops = []
+            this.path = null
+        }
+        return instance
     }
 
     static getInstance() {
@@ -12,7 +16,7 @@ Route = class Route {
         return instance
     }
 
-    updateBuses(jsonData) {
+    updateBuses(data) {
         $.each(this.buses, function(_, bus) {
             bus.erase()
         })
@@ -21,30 +25,40 @@ Route = class Route {
 
         var min_lat = 200, max_lat = -200,
             min_lng = 200, max_lng = -200
-        for (var i = 0; i < jsonData.length; i++) {
-            var bus = new Bus(jsonData[i])
-            if (bus.uptodate)
-                this.buses.push(bus)
-            this.buses.push(bus)
+        for (var i = 0; i < data.length; i++) {
+            var bus = new Bus(data[i])
             if (bus.lat < min_lat) min_lat = bus.lat
             if (bus.lat > max_lat) max_lat = bus.lat
             if (bus.lng < min_lng) min_lng = bus.lng
             if (bus.lng > max_lng) max_lng = bus.lng
+
+            this.buses.push(bus)
+            bus.draw()
         }
         this.lat = (min_lat + max_lat) / 2
         this.lng = (min_lng + max_lng) / 2
-
-        this.draw()
     }
 
-    drawPath(path_data) {
+    drawPath(data) {
+        if (!Array.isArray(data))
+            throw new TypeError('Entrada com tipo inválido')
+
         // Remove existing polyline
-        if (this.path) this.path.setMap(null)
+        if (this.path)
+            this.path.setMap(null)
 
         // Parse data
         var path_coordinates = []
-        for(var i=0; i<path_data.length; i++) {
-            path_coordinates.push({'lat': parseFloat(path_data[i].latitude), 'lng': parseFloat(path_data[i].longitude)});
+        for(var i=0; i<data.length; i++) {
+            var coord = {
+                'lat': parseFloat(data[i].latitude),
+                'lng': parseFloat(data[i].longitude)
+            };
+
+            if (isNaN(coord.lat) || isNaN(coord.lng))
+                throw new TypeError('Entrada com formato inválido')
+
+            path_coordinates.push();
         }
 
         this.path = new google.maps.Polyline({
@@ -75,11 +89,5 @@ Route = class Route {
 
     recenter() {
         GoogleMaps.maps.map.instance.setCenter(new google.maps.LatLng(this.lat, this.lng))
-    }
-
-    draw() {
-        $.each(this.buses, function(_, bus) {
-            bus.draw();
-        })
     }
 }
