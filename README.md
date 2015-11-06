@@ -9,9 +9,9 @@ Tudo isso é feito usando a API do Google e os dados oferecidos pela cidade do R
 ### Instalação
 Para instalar e rodar o aplicativo localmente:
 
-1. Instale o meteor (instruções em inglês [aqui](https://www.meteor.com/install)).
-2. Clone o [projeto](https://github.com/naumazeredo/bus-follower) do GitHub.
-3. Entre no diretório raíz do projeto e execute `$ meteor`
+1. Instale o Meteor (instruções em inglês [aqui](https://www.meteor.com/install)).
+2. [Clone](https://help.github.com/articles/cloning-a-repository/) o [projeto](https://github.com/naumazeredo/bus-follower) do GitHub.
+3. Entre no diretório raíz (pela linha de comando) do projeto e execute `$ meteor`. No Google Chrome é necessário executar como `$ meteor --production` devido à uma incompatibilidade entre o Jasmine (plataforma de testes) e o Google Maps API.
 
 O app está pronto para ser utilizado em qualquer browser da sua máquina.
 
