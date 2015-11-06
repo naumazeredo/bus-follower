@@ -58,7 +58,7 @@ Route = class Route {
             if (isNaN(coord.lat) || isNaN(coord.lng))
                 throw new TypeError('Entrada com formato inválido')
 
-            path_coordinates.push();
+            path_coordinates.push(coord);
         }
 
         this.path = new google.maps.Polyline({

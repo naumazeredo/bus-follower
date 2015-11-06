@@ -13,11 +13,13 @@ Template.busQuery.events({
             update = false
 
             Meteor.call('getRoute', bus, function(err, data) {
+                if (err) return;
                 if (data.statusCode === 200)
                     route.drawPath(new CSV(data.content).object);
             });
 
-            Meteor.call('getRoute', bus, function(err, data) {
+            Meteor.call('getStops', bus, function(err, data) {
+                if (err) return;
                 if (data.statusCode === 200)
                     route.drawStops(new CSV(data.content).object);
             });
